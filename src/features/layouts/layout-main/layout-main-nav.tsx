@@ -1,9 +1,9 @@
 "use client"
 
-import Link from "next/link"
-import React, { useEffect, useState } from "react"
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
-export const LayoutMain = () => {
+export const LayoutMainNav = () => {
   const [favoritesCount, setFavoritesCount] = useState(0)
   const [cartCount, setCartCount] = useState(0)
 
@@ -29,17 +29,17 @@ export const LayoutMain = () => {
 
       <Link href="/favourite" className="hover:text-blue-500 font-semibold relative">
         Favourite
-        {favoritesCount > 0 && (
-          <span className="ml-1 inline-block bg-red-500 text-white text-xs px-2 rounded-full">
-            {favoritesCount}
-          </span>
-        )}
+        {/* {favoritesCount > 0 && ( */}
+        <span className="ml-1 inline-block bg-red-500 text-white text-xs px-2 rounded-full">
+          {favoritesCount}
+        </span>
+        {/* )} */}
       </Link>
 
       <Link href="/cart" className="hover:text-blue-500 font-semibold relative">
         Cart
-        {cartCount > 0 && (
-          <span className="ml-1 inline-block bg-blue-500 text-white text-xs px-2 rounded-full">
+        {cartCount > -1 && (
+          <span className="ml-1 inline-block bg-yellow-500 text-white text-xs px-2 rounded-full">
             {cartCount}
           </span>
         )}

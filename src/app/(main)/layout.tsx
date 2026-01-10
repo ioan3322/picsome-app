@@ -1,4 +1,4 @@
-import { LayoutMain } from "@/features/layouts/layout-main";
+import { LayoutMain } from "@/features/layouts/layout-main/layout-main";
 import "../styles/globals.css";
 
 export default function RootLayout({
