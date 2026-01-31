@@ -5,32 +5,32 @@ const photos = [
     id: 1,
     title: 'Apus de soare',
     price: '10€',
-    image: 'https://via.placeholder.com/400x300'
+    image: '/images/placeholder.svg'
   },
   {
     id: 2,
     title: 'Munți',
     price: '12€',
-    image: 'https://via.placeholder.com/400x300'
+    image: '/images/placeholder.svg'
   },
   {
     id: 3,
     title: 'Oraș noaptea',
     price: '15€',
-    image: 'https://via.placeholder.com/400x300'
+    image: '/images/placeholder.svg'
   },
   {
     id: 4,
     title: 'Natură',
     price: '9€',
-    image: 'https://via.placeholder.com/400x300'
+    image: '/images/placeholder.svg'
   }
 ]
 
 export const Store = () => {
   return (
     <div className="min-h-screen bg-white px-4 py-12 font-sans">
-      
+
       <h1 className="text-3xl font-bold text-center text-gray-800 mb-10">
         Store
       </h1>
