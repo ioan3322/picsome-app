@@ -1,36 +1,59 @@
-import React from 'react'
+import React from "react";
 
 const photos = [
   {
     id: 1,
-    title: 'Apus de soare',
-    price: '10€',
-    image: '/images/placeholder.svg'
+    title: "Fotografie 1",
+    price: "10 RON",
+    image: "https://picsum.photos/400/300?random=1"
   },
   {
     id: 2,
-    title: 'Munți',
-    price: '12€',
-    image: '/images/placeholder.svg'
+    title: "Fotografie 2",
+    price: "12 RON",
+    image: "https://picsum.photos/400/300?random=2"
   },
   {
     id: 3,
-    title: 'Oraș noaptea',
-    price: '15€',
-    image: '/images/placeholder.svg'
+    title: "Fotografie 3",
+    price: "15 RON",
+    image: "https://picsum.photos/400/300?random=3"
   },
   {
     id: 4,
-    title: 'Natură',
-    price: '9€',
-    image: '/images/placeholder.svg'
-  }
-]
+    title: "Fotografie 4",
+    price: "9 RON",
+    image: "https://picsum.photos/400/300?random=4"
+  },
+  {
+    id: 5,
+    title: "Fotografie 5",
+    price: "20 RON",
+    image: "https://picsum.photos/400/300?random=5"
+  },
+  {
+    id: 6,
+    title: "Fotografie 6",
+    price: "18 RON",
+    image: "https://picsum.photos/400/300?random=6"
+  },
+  {
+    id: 7,
+    title: "Fotografie 7",
+    price: "25 RON",
+    image: "https://picsum.photos/400/300?random=7"
+  },
+  {
+    id: 8,
+    title: "Fotografie 8",
+    price: "30 RON",
+    image: "https://picsum.photos/400/300?random=8"
+  },
+];
 
 export const Store = () => {
   return (
     <div className="min-h-screen bg-white px-4 py-12 font-sans">
-
       <h1 className="text-3xl font-bold text-center text-gray-800 mb-10">
         Store
       </h1>
@@ -61,7 +84,6 @@ export const Store = () => {
           </div>
         ))}
       </div>
-
     </div>
-  )
-}
+  );
+};
