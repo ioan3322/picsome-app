@@ -1,6 +1,13 @@
 import React from 'react'
 import Link from 'next/link'
-export const Home = () => {
+import Image from 'next/image'
+
+interface IProps {
+  data: any[]
+}
+
+
+export const Home = ({ data }: IProps) => {
   return (
     <div className="min-h-screen bg-white font-sans">
 
@@ -26,32 +33,21 @@ export const Home = () => {
           Fotografii populare
         </h2>
 
+
         <div className="grid grid-cols-30 sm:grid-cols-20 md:grid-cols-4 gap-6">
-          <img src="https://picsum.photos/300/200?random=1" alt="Gallery Image 1" />
-          <img src="https://picsum.photos/300/200?random=2" alt="Gallery Image 2" />
-          <img src="https://picsum.photos/300/200?random=3" alt="Gallery Image 3" />
-          <img src="https://picsum.photos/300/200?random=4" alt="Gallery Image 4" />
-          <img src="https://picsum.photos/300/200?random=5" alt="Gallery Image 5" />
-          <img src="https://picsum.photos/300/200?random=6" alt="Gallery Image 6" />
-          <img src="https://picsum.photos/300/200?random=7" alt="Gallery Image 7" />
-          <img src="https://picsum.photos/300/200?random=8" alt="Gallery Image 8" />
-          <img src="https://picsum.photos/300/200?random=9" alt="Gallery Image 9" />
-          <img src="https://picsum.photos/300/200?random=10" alt="Gallery Image 10" />
-          <img src="https://picsum.photos/300/200?random=11" alt="Gallery Image 11" />
-          <img src="https://picsum.photos/300/200?random=12" alt="Gallery Image 12" />
-          <img src="https://picsum.photos/300/200?random=13" alt="Gallery Image 13" />
-          <img src="https://picsum.photos/300/200?random=14" alt="Gallery Image 14" />
-          <img src="https://picsum.photos/300/200?random=15" alt="Gallery Image 15" />
-          <img src="https://picsum.photos/300/200?random=16" alt="Gallery Image 16" />
-          <img src="https://picsum.photos/300/200?random=17" alt="Gallery Image 17" />
-          <img src="https://picsum.photos/300/200?random=18" alt="Gallery Image 18" />
-          <img src="https://picsum.photos/300/200?random=19" alt="Gallery Image 19" />
-          <img src="https://picsum.photos/300/200?random=20" alt="Gallery Image 20" />
-          <img src="https://picsum.photos/300/200?random=21" alt="Gallery Image 21" />
-          <img src="https://picsum.photos/300/200?random=22" alt="Gallery Image 22" />
-          <img src="https://picsum.photos/300/200?random=23" alt="Gallery Image 23" />
-          <img src="https://picsum.photos/300/200?random=24" alt="Gallery Image 24" />
+          {
+            data.map((item: any) => (
+              <div className="shrink-0" key={item.id}>
+
+                <Image width={300} height={300} src={item.download_url} alt="Gallery Image 1" className="rounded-[6px] border border-indigo-600 shrink-0" />
+              </div>
+            ))
+          }
         </div>
+
+
+
+
       </div>
 
     </div>
