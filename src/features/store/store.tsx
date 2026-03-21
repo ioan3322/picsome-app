@@ -1,89 +1,50 @@
-import React from "react";
+import React from "react"
+import Image from "next/image"
 
-const photos = [
-  {
-    id: 1,
-    title: "Fotografie 1",
-    price: "10 RON",
-    image: "https://picsum.photos/400/300?random=1"
-  },
-  {
-    id: 2,
-    title: "Fotografie 2",
-    price: "12 RON",
-    image: "https://picsum.photos/400/300?random=2"
-  },
-  {
-    id: 3,
-    title: "Fotografie 3",
-    price: "15 RON",
-    image: "https://picsum.photos/400/300?random=3"
-  },
-  {
-    id: 4,
-    title: "Fotografie 4",
-    price: "9 RON",
-    image: "https://picsum.photos/400/300?random=4"
-  },
-  {
-    id: 5,
-    title: "Fotografie 5",
-    price: "20 RON",
-    image: "https://picsum.photos/400/300?random=5"
-  },
-  {
-    id: 6,
-    title: "Fotografie 6",
-    price: "18 RON",
-    image: "https://picsum.photos/400/300?random=6"
-  },
-  {
-    id: 7,
-    title: "Fotografie 7",
-    price: "25 RON",
-    image: "https://picsum.photos/400/300?random=7"
-  },
-  {
-    id: 8,
-    title: "Fotografie 8",
-    price: "30 RON",
-    image: "https://picsum.photos/400/300?random=8"
-  },
-];
+interface StoreProps {
+  data: any[]
+}
 
-export const Store = () => {
+export const Store = ({ data }: StoreProps) => {
   return (
     <div className="min-h-screen bg-white px-4 py-12 font-sans">
       <h1 className="text-3xl font-bold text-center text-gray-800 mb-10">
         Store
       </h1>
 
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {photos.map(photo => (
-          <div
-            key={photo.id}
-            className="border rounded-lg shadow-sm hover:shadow-md transition"
-          >
-            <img
-              src={photo.image}
-              alt={photo.title}
-              className="w-full h-48 object-cover rounded-t-lg"
-            />
+      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {data.map((photo) => {
+          const maxPreviewWidth = 320
+          const displayWidth = Math.min(photo.width, maxPreviewWidth)
+          const displayHeight = Math.round((photo.height / photo.width) * displayWidth)
 
-            <div className="p-4">
-              <h2 className="text-lg font-semibold text-gray-800">
-                {photo.title}
-              </h2>
+          return (
+            <div
+              key={photo.id}
+              className="border rounded-lg shadow-sm hover:shadow-md transition overflow-hidden bg-white"
+            >
+              <Image
+                src={photo.download_url}
+                alt={photo.author}
+                width={displayWidth}
+                height={displayHeight}
+                className="w-full h-auto"
+              />
 
-              <p className="text-gray-600 mb-4">{photo.price}</p>
+              <div className="p-4">
+                <h2 className="text-lg font-semibold text-gray-800">
+                  {photo.author}
+                </h2>
 
-              <button className="w-full py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">
-                Cumpără
-              </button>
+
+                <button className="w-full py-2 bg-yellow-500 text-white rounded-lg  hover:bg-yellow-600 transition mt-2">
+                  Cumpara
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          )
+        })}
       </div>
     </div>
-  );
-};
+  )
+}

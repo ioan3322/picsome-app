@@ -1,7 +1,7 @@
 "use client"
-
+import { usePathname } from "next/navigation"
 import Link from "next/link"
-import React, { useEffect, useState } from "react"
+import React, { use, useEffect, useState } from "react"
 
 export const LayoutMain = () => {
   const [favoritesCount, setFavoritesCount] = useState(0)
@@ -17,17 +17,20 @@ export const LayoutMain = () => {
     }
   }, [])
 
+  const pathname = usePathname()
   return (
-    <nav className="flex gap-6 bg-black-100 p-4 shadow-md">
-      <Link href="/" className="hover:text-blue-500 font-semibold">
+
+    <nav className="flex justify-center items-center gap-6 bg-black-200 p-4  font-bold shadow-md">
+
+      <Link href="/" className={pathname === "/" ? "bg-black-200 text-blue-500" : "hover:text-blue-500 "}>
         Home
       </Link>
 
-      <Link href="/store" className="hover:text-blue-500 font-semibold">
+      <Link href="/store" className={pathname === "/store" ? "bg-black-200 text-blue-500" : "hover:text-blue-500 "}>
         Store
       </Link>
 
-      <Link href="/favourite" className="hover:text-blue-500 font-semibold relative">
+      <Link href="/favourite" className={pathname === "/favourite" ? "bg-black-200 text-blue-500" : "hover:text-blue-500 "}>
         Favourite
         {favoritesCount > 0 && (
           <span className="ml-1 inline-block bg-red-500 text-white text-xs px-2 rounded-full">
@@ -36,7 +39,7 @@ export const LayoutMain = () => {
         )}
       </Link>
 
-      <Link href="/cart" className="hover:text-blue-500 font-semibold relative">
+      <Link href="/cart" className={pathname === "/cart" ? "bg-black-200 text-blue-500" : "hover:text-blue-500   "}>
         Cart
         {cartCount > 0 && (
           <span className="ml-1 inline-block bg-blue-500 text-white text-xs px-2 rounded-full">

@@ -1,10 +1,10 @@
-import { getImagesApi } from "@/features/api";
+import { getImagesByCategory } from "@/features/api";
 import { Home } from "@/features/home/home";
 import Image from "next/image";
 
 const HomePage = async () => {
-  const data = await getImagesApi()
-  console.log("HomePage", data[0])
+  const data = await getImagesByCategory({})
+  console.log("HomePage", data)
   /*
   Integrate Zustand Store
     - 3add data to Zustand Store 

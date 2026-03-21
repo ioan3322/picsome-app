@@ -39,7 +39,7 @@ export const Home = ({ data }: IProps) => {
             data.map((item: any) => (
               <div className="shrink-0" key={item.id}>
 
-                <Image width={300} height={300} src={item.download_url} alt="Gallery Image 1" className="rounded-[6px] border border-indigo-600 shrink-0" />
+                <img width={300} height={300} src={item.src.medium} alt="Gallery Image 1" className="rounded-[6px] border border-indigo-600 shrink-0" />
               </div>
             ))
           }

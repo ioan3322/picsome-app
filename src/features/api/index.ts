@@ -1,21 +1,45 @@
-export const getImagesApi = async () => {
-  const baseUrl = "https://picsum.photos/v2/list"
-  const pageQuery = "?page=1"
-  const limitQuery = "&limit=20"
+const pageSizeParam = "&per_page=20"
 
-  /*
-  improve API:
-      - look over the course and analyze project configuration
-      - we need to understand how to improve API quality to fetch data based on categories  e.g fetch data only for cats or dogs 
-      - we need to validate data ,make sure is an array and if it is undefined to return an empty array
-      - if error keep returning empty array 
-  */
-  try {
-    const response = await fetch(baseUrl + pageQuery + limitQuery)
-    const data = await response.json()
-    console.log({ data })
-    return data || []
-  } catch (error: any) {
-    console.log(error.mesage)
-  }
+
+const isValidPhoto = (photo: any) => {
+  const isValid = !!photo && !!photo?.src.original?.length
+  return isValid
 }
+
+interface IProps {
+  page?: number,
+  category?: string,
+}
+
+export const getImagesByCategory = async ({ page = 1, category = "cars" }: IProps) => {
+  const ApiKey = process.env.PEXELS_API_KEY
+  const apiUrl = process.env.PEXELS_API_URL
+
+  if (!ApiKey) throw new Error("Missing API key");
+  if (!apiUrl) throw new Error("Missing API URL");
+
+  const pageParam = `&page=${page}`
+  const queryParam = `?query=${category}`
+  const endpoint = `${apiUrl}${queryParam}${pageParam}${pageSizeParam}`
+  const response = await fetch(endpoint, {
+    headers: {
+      Authorization: ApiKey
+    }
+  })
+  const data = await response.json()
+  const photos = Array.isArray(data?.photos) ? data.photos : []
+
+  const validPhotos = photos.filter(isValidPhoto)
+
+
+  return validPhotos
+}
+///HOMEWORK
+//configure env variables for the new api in vercel,make sure to usethe same variables used localy in env.local
+//after configuring the variables deploy the project to vercell adn test to see if the pictures are showing in the browser
+//use image component from next.js, require a configuration in next.config to allow images from api domain
+//beacuse images will be recevied in diferent sizes make seure to apply masonry layout ;taiwind.css has a masonry layout avariable
+//keep traking pexels API
+//play with the API and make sure is alaways fetched on server side component
+//the last thing is to fix the warnings and errors
+//
