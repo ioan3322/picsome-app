@@ -1,3 +1,5 @@
+import { DataImageItem, ImageItem } from "@/shared/utils/types"
+
 const pageSizeParam = "&per_page=20"
 
 
@@ -11,7 +13,7 @@ interface IProps {
   category?: string,
 }
 
-export const getImagesByCategory = async ({ page = 1, category = "cars" }: IProps) => {
+export const getImagesByCategory = async ({ page = 1, category = "horse" }: IProps) => {
   const ApiKey = process.env.PEXELS_API_KEY
   const apiUrl = process.env.PEXELS_API_URL
 
@@ -27,7 +29,24 @@ export const getImagesByCategory = async ({ page = 1, category = "cars" }: IProp
     }
   })
   const data = await response.json()
+
   const photos = Array.isArray(data?.photos) ? data.photos : []
+  const dataPhotos = photos.map((photo: DataImageItem) => {
+
+    return {
+      id: photo.id,
+      width: photo.width,
+      height: photo.height,
+      photographer: photo.photographer,
+      src: {
+        original: photo.src.original,
+        medium: photo.src.medium
+      },
+      alt: photo.alt
+
+    }
+
+  })
 
   const validPhotos = photos.filter(isValidPhoto)
 
@@ -42,4 +61,4 @@ export const getImagesByCategory = async ({ page = 1, category = "cars" }: IProp
 //keep traking pexels API
 //play with the API and make sure is alaways fetched on server side component
 //the last thing is to fix the warnings and errors
-//
+//investigate the fetch result in postman and make sure you define the right type declatarion for the imgaes data

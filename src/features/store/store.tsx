@@ -1,50 +1,54 @@
-import React from "react"
-import Image from "next/image"
+"use client"
 
+import Image from "next/image"
+import Masonry from "react-masonry-css"
+import { getImagesByCategory } from "../api"
 interface StoreProps {
-  data: any[]
+  type: getImagesByCategory[]
 }
 
-export const Store = ({ data }: StoreProps) => {
+
+export const Store = ({ data }: GetImageByCategory[]) => {
+  const breakpoints = {
+    default: 5,
+    1024: 2,
+    640: 1,
+  }
   return (
     <div className="min-h-screen bg-white px-4 py-12 font-sans">
       <h1 className="text-3xl font-bold text-center text-gray-800 mb-10">
         Store
       </h1>
+      <div className="max-w-6xl mx-auto">
+        <Masonry
+          breakpointCols={breakpoints}
+          className="flex gap-3"
+          columnClassName="flex flex-col gap-3"
 
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {data.map((photo) => {
-          const maxPreviewWidth = 320
-          const displayWidth = Math.min(photo.width, maxPreviewWidth)
-          const displayHeight = Math.round((photo.height / photo.width) * displayWidth)
 
-          return (
-            <div
-              key={photo.id}
-              className="border rounded-lg shadow-sm hover:shadow-md transition overflow-hidden bg-white"
-            >
+        >
+          {data.map((photo) => (
+            <div key={photo.id} className="relative w-full">
               <Image
-                src={photo.download_url}
-                alt={photo.author}
-                width={displayWidth}
-                height={displayHeight}
+                src={photo.src.medium}
+                alt={photo.alt || ""}
+                width={photo.width}
+                height={photo.height}
                 className="w-full h-auto"
               />
 
-              <div className="p-4">
-                <h2 className="text-lg font-semibold text-gray-800">
-                  {photo.author}
+
+              <div className="px-4 pt-3 pb-4 bg-gray-200 rounded-b-md shadow-lg">
+                <h2 className="text-lg text-gray-800 leading-tight">
+                  {photo.photographer}
                 </h2>
 
 
-                <button className="w-full py-2 bg-yellow-500 text-white rounded-lg  hover:bg-yellow-600 transition mt-2">
-                  Cumpara
-                </button>
               </div>
             </div>
-          )
-        })}
+          ))}
+        </Masonry>
       </div>
-    </div>
+    </div >
   )
 }
