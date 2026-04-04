@@ -3,16 +3,9 @@ import { Home } from "@/features/home/home";
 import Image from "next/image";
 
 const HomePage = async () => {
-  const data = await getImagesByCategory({})
-  console.log("HomePage", data)
-  /*
-  Integrate Zustand Store
-    - 3add data to Zustand Store 
-    - deliver data from Zustand Store (save the data to ZustandStore and use it across the aplication)
-    - 1 make sure o aknowlege about 2props in react and typescript 4aply knowledge to current project
-    - 
-    
-  */
+  const data = await getImagesByCategory({
+    page: 1, category: "easter"
+  })
 
   return (
     <Home data={data} />

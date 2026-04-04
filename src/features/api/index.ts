@@ -1,9 +1,9 @@
-import { DataImageItem, ImageItem } from "@/shared/utils/types"
+import { PAGE_SIZE_PARAM } from "@/shared/utils/constants"
+import { DataImageItem } from "@/shared/utils/types"
 
-const pageSizeParam = "&per_page=20"
 
 
-const isValidPhoto = (photo: any) => {
+const isValidPhoto = (photo: DataImageItem) => {
   const isValid = !!photo && !!photo?.src.original?.length
   return isValid
 }
@@ -13,7 +13,7 @@ interface IProps {
   category?: string,
 }
 
-export const getImagesByCategory = async ({ page = 1, category = "horse" }: IProps) => {
+export const getImagesByCategory = async ({ page = 1, category = "plane" }: IProps) => {
   const ApiKey = process.env.PEXELS_API_KEY
   const apiUrl = process.env.PEXELS_API_URL
 
@@ -22,34 +22,16 @@ export const getImagesByCategory = async ({ page = 1, category = "horse" }: IPro
 
   const pageParam = `&page=${page}`
   const queryParam = `?query=${category}`
-  const endpoint = `${apiUrl}${queryParam}${pageParam}${pageSizeParam}`
+  const endpoint = `${apiUrl}${queryParam}${pageParam}${PAGE_SIZE_PARAM}`
   const response = await fetch(endpoint, {
     headers: {
       Authorization: ApiKey
     }
   })
+
   const data = await response.json()
-
   const photos = Array.isArray(data?.photos) ? data.photos : []
-  const dataPhotos = photos.map((photo: DataImageItem) => {
-
-    return {
-      id: photo.id,
-      width: photo.width,
-      height: photo.height,
-      photographer: photo.photographer,
-      src: {
-        original: photo.src.original,
-        medium: photo.src.medium
-      },
-      alt: photo.alt
-
-    }
-
-  })
-
   const validPhotos = photos.filter(isValidPhoto)
-
 
   return validPhotos
 }

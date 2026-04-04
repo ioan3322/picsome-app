@@ -26,8 +26,8 @@ export const LayoutMain = () => {
         Home
       </Link>
 
-      <Link href="/store" className={pathname === "/store" ? "bg-black-200 text-blue-500" : "hover:text-blue-500 "}>
-        Store
+      <Link href="/gallery" className={pathname === "/gallery" ? "bg-black-200 text-blue-500" : "hover:text-blue-500 "}>
+        Gallery
       </Link>
 
       <Link href="/favourite" className={pathname === "/favourite" ? "bg-black-200 text-blue-500" : "hover:text-blue-500 "}>

@@ -1,0 +1,1 @@
+export const PAGE_SIZE_PARAM = "&per_page=50"

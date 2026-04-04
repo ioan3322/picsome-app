@@ -35,3 +35,8 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 IoanSutu
+
+                                                                                        TEME
+      *Refactorizareac codului care se repeta (DRY)
+        Implementarea constantelor pentru refolosire(Litere mari separate prin "_")
+        Optional -daca exista timp inceperea studiului pentru zustandStore si implementarea initiala
