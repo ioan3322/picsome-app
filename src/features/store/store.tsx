@@ -2,13 +2,22 @@
 
 import Image from "next/image"
 import Masonry from "react-masonry-css"
-import { getImagesByCategory } from "../api"
+
 interface StoreProps {
-  type: getImagesByCategory[]
+  data: {
+    id: string | number
+    src: {
+      medium: string
+    }
+    alt?: string
+    width: number
+    height: number
+    photographer: string
+  }[]
 }
 
 
-export const Store = ({ data }: GetImageByCategory[]) => {
+export const Store = ({ data }: StoreProps) => {
   const breakpoints = {
     default: 5,
     1024: 2,

@@ -1,8 +1,6 @@
 "use client"
 import Link from 'next/link'
 
-import { ImageComponent } from '../images/image-component'
-
 
 interface IProps {
   data: any[]
@@ -12,10 +10,6 @@ interface IProps {
 export const Home = ({ data }: IProps) => {
   return (
     <div className="min-h-screen bg-white font-sans">
-
-
-
-      {/* Hero Section */}
       <div className="flex flex-col items-center justify-center text-center py-20 px-4 bg-gray-50">
         <h1 className="text-4xl font-bold text-gray-800 mb-4">
           PicSomeAPP
@@ -39,14 +33,11 @@ export const Home = ({ data }: IProps) => {
 
 
         <div className="grid grid-cols-30 sm:grid-cols-20 md:grid-cols-4 gap-6">
-          {
-            data.map((item) => (
-              <div className="shrink-0" key={item.id}>
-                <ImageComponent image={item} />
-                <img width={300} height={300} src={item.src.medium} alt="Gallery Image 1" className="rounded-[6px] border border-indigo-600 shrink-0" />
-              </div>
-            ))
-          }
+          {data.map((item) => (
+            <div className="shrink-0" key={item.id}>
+              <img width={300} height={300} src={item.src.medium} alt="Gallery Image 1" className="rounded-[6px] border border-indigo-600 shrink-0" />
+            </div>
+          ))}
         </div>
 
 
