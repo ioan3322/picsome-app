@@ -13,8 +13,9 @@ interface iProps {
 export const Gallery = ({ data }: iProps) => {
   const breakpoints = {
     default: 5,
-    1024: 2,
-    640: 1,
+    1024: 3,
+    640: 3,
+    576: 2,
   }
   return (
     <div className="min-h-screen bg-white px-4 py-12 font-sans">
