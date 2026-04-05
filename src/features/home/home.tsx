@@ -6,7 +6,8 @@ import Masonry from "react-masonry-css"
 const breakpoints = {
   default: 5,
   1024: 2,
-  640: 1,
+  640: 3,
+  576: 2,
 }
 interface IProps {
   data: any[]
