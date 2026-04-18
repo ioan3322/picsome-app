@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import Image from "next/image"
 import Masonry from "react-masonry-css"
+import { DataImageItem } from '@/shared/utils/types'
 
 const breakpoints = {
   default: 5,
@@ -9,24 +10,11 @@ const breakpoints = {
   640: 3,
   576: 2,
 }
-interface IProps {
-  data: any[]
-}
-interface HomeProps {
-  data: {
-    id: string | number
-    src: {
-      medium: string
-    }
-    alt?: string
-    width: number
-    height: number
-    photographer: string
-  }[]
-}
 
 
-export const Home = ({ data }: HomeProps) => {
+
+
+export const Home = ({ data }: { data: DataImageItem[] }) => {
   return (
     <div className="min-h-screen bg-white font-sans">
       <div className="flex flex-col items-center justify-center text-center py-20 px-4 bg-gray-50">
@@ -57,7 +45,7 @@ export const Home = ({ data }: HomeProps) => {
 
 
         >
-          {data.map((photo) => (
+          {data.map((photo: DataImageItem) => (
             <div key={photo.id} className="relative w-full">
               <Image
                 src={photo.src.medium}
