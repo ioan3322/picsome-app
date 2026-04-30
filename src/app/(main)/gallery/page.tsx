@@ -1,12 +1,7 @@
-import { getImagesByCategory } from "@/features/api"
-import { Gallery } from "@/features/gallery/gallery"
+import { getImagesByCategory } from "@/features/api" 
+import { Gallery } from "@/features/gallery/gallery" 
 
-
-const GalleryPage = async () => {
-    const data = await getImagesByCategory({
-        page: 1, category: "cars"
-    })
-    return <Gallery data={data} />
-}
-
-export default GalleryPage
+const GalleryPage = async () => { 
+    const data = await getImagesByCategory({ page: 2, category: "easter" }) 
+return <Gallery data={data} /> }
+ export default GalleryPage

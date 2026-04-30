@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const HomePage = async () => {
   const data = await getImagesByCategory({
-    page: 1, category: "easter"
+    page: 1, category: "may"
   })
 
   return (

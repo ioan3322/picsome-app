@@ -1,3 +1,4 @@
+import { useState } from "react"
 
 export interface ImageItem {
   id: string | number
@@ -33,3 +34,6 @@ export interface DataImageItem {
   alt: string
 
 }
+
+
+
