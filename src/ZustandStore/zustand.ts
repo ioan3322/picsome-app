@@ -1,5 +1,5 @@
 import {create } from 'zustand';
-import { ImageItem } from '../shared/utils/types';
+import { ImageItem,DataImageItem } from '../shared/utils/types';
 
 type StoreState = {
  count: number;
@@ -7,4 +7,5 @@ type StoreState = {
 
 export const useStore = create<StoreState>(() => ({
     count: 0,
+    
 }))
