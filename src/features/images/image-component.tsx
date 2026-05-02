@@ -1,10 +1,12 @@
 import { ImageItem } from "@/shared/utils/types";
 import Image from "next/image";
+
 interface IProps {
   photo: ImageItem;
+  loading?: "eager" | "lazy";
 }
 
-export const ImageComponent = ({ photo }: IProps) => {
+export const ImageComponent = ({ photo, loading = "lazy" }: IProps) => {
 
   return (
     <div className="relative w-full">
@@ -15,6 +17,7 @@ export const ImageComponent = ({ photo }: IProps) => {
         width={photo.width}
         height={photo.height}
         className="w-full h-auto"
+        loading={loading}
       />
 
 

@@ -64,10 +64,12 @@ export const Gallery = ({ data }: iProps) => {
 
 
         >
-          {images.map((photo) => (
-            <ImageComponent photo={photo} key={photo.id} />
-
-
+          {images.map((photo, index) => (
+            <ImageComponent
+              photo={photo}
+              key={photo.id}
+              loading={index === 0 ? "eager" : "lazy"}
+            />
 
           ))}
         </Masonry>

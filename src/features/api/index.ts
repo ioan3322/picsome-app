@@ -9,11 +9,11 @@ const isValidPhoto = (photo: DataImageItem) => {
 }
 
 interface IProps {
-  page?:string ,
+  page?:number | string,
   category?: string,
 }
 
-export const getImagesByCategory = async ({ page = "1", category = "random" }: IProps) => {
+export const getImagesByCategory = async ({ page = 1, category = "random" }: IProps) => {
   const ApiKey = process.env.PEXELS_API_KEY
   const apiUrl = process.env.PEXELS_API_URL
 
