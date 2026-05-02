@@ -5,7 +5,7 @@ interface IProps {
 }
 
 export const ImageComponent = ({ photo }: IProps) => {
-  console.log("Image component", photo)
+
   return (
     <div className="relative w-full">
 

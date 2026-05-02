@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
   try {
     const images = await getImagesByCategory({
       category: query,
-      page: parseInt(page),
+      page: page,
     })
     return NextResponse.json(images)
   } catch (error) {

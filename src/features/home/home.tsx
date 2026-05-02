@@ -5,6 +5,7 @@ import Image from "next/image"
 import Masonry from "react-masonry-css"
 import { DataImageItem } from '@/shared/utils/types'
 import {useEffect, useState } from 'react'
+import cx from 'classnames'
 
 
 const breakpoints = {
@@ -29,13 +30,15 @@ export const Home = ({ data }: { data: DataImageItem[] }) => {
   return (
     <div className="min-h-screen bg-white font-sans">
       
-      <div  className="flex flex-col items-center justify-center text-center py-20 px-4 bg-cover bg-center rounded-lg shadow-md"
-            style={{ backgroundImage: `url(${bgImage})` }}>
-        <h1 className="text-4xl font-bold text-white mb-4">
+      <div  className="relative flex flex-col items-center justify-center text-center py-20 px-4 bg-cover bg-center rounded-[0_0_8px_8px] shadow-md overflow-hidden"
+          style={{ backgroundImage: `url(${bgImage})`}}>
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-green-500/30" />        
+      <div className="relative z-10"/>
+      <h1 className="text-4xl font-bold text-white mb-4 z-20">
           PicSome App
         </h1>
        
-        <Link href='/gallery'>
+        <Link href='/gallery' className='z-30'>
 
           <button className="px-6 py-3 bg-white text-gray-600 rounded-lg hover:bg-blue-100 hover:text-black transition hover:cursor-pointer">
             Vezi galeria
@@ -43,7 +46,7 @@ export const Home = ({ data }: { data: DataImageItem[] }) => {
         </Link>
       </div>
 
-      {/* Gallery Preview */}
+      
       <div className="max-w-6xl mx-auto py-16 px-4">
         <h2 className="text-2xl font-semibold text-gray-800 mb-8 text-center">
           Cele mai recente fotografii
