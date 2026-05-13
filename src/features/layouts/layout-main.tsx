@@ -19,6 +19,8 @@ export const LayoutMain = () => {
   }, [])
 
 return (
+  
   <LayoutMainNav />
+  
 )
 }

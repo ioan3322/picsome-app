@@ -9,6 +9,7 @@ export interface ImageItem {
   width: number
   height: number
   photographer: string
+  photographer_url: string
 }
 
 export interface DataImageItem {

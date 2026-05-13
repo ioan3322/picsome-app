@@ -12,7 +12,7 @@ export const Favourite = () => {
       <div className='flex flex-col  gap-4 bg-gray-100  py-10 px-8  text-gray-600 bg-center rounded-lg shadow-md'>
         <h1 className='text-xl font-semibold text-black'>Favourites</h1>
         
-          <p>Nu ai adăugat încă nicio fotografie la favorite.</p>
+          <p>Not favourites yet.</p>
         
       </div>
 

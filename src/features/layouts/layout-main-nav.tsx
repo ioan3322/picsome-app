@@ -19,53 +19,41 @@ export const LayoutMainNav = () => {
 
   const pathname = usePathname()
   return (
+    <nav className="sticky top-0 z-50 flex w-full items-center rounded-3xl border-b border-white/20 bg-white/10 px-4 py-2 text-black shadow-lg backdrop-blur-md backdrop-saturate-150">
+      <div className="flex-1">
+        <h1 className="text-2xl font-bold text-black">PS</h1>
+      </div>
 
-  <nav className="flex items-center w-full bg-black p-4 font-bold shadow-md ">
+      <div className="flex flex-1 justify-center gap-6">
+        <Link href="/" className={pathname === "/" ? "font-bold" : "hover:font-bold"}>
+          Home
+        </Link>
 
-  
-  <div className="flex-1">
-    <h1 className="text-4xl font-bold text-white">
-      PS
-    </h1>
-  </div>
+        <Link href="/gallery" className={pathname === "/gallery" ? "font-bold" : "hover:font-bold"}>
+          Gallery
+        </Link>
 
-  
-  <div className="flex gap-6 justify-center flex-1">
-    
-    <Link href="/" className={pathname === "/" ? "text-blue-500" : "hover:text-blue-500"}>
-      Home
-    </Link>
+        <Link href="/favourite" className={pathname === "/favourite" ? "font-bold" : "hover:font-bold"}>
+          Favourite
+          {favoritesCount > 0 && (
+            <span className="ml-1 inline-block rounded-full bg-red-500 px-2 text-xs text-white">
+              {favoritesCount}
+            </span>
+          )}
+        </Link>
 
-    <Link href="/gallery" className={pathname === "/gallery" ? "text-blue-500" : "hover:text-blue-500"}>
-      Gallery
-    </Link>
+        <Link href="/cart" className={pathname === "/cart" ? "font-bold" : "hover:font-bold"}>
+          Cart
+          {cartCount > 0 && (
+            <span className="ml-1 inline-block rounded-full bg-blue-500 px-2 text-xs text-white">
+              {cartCount}
+            </span>
+          )}
+        </Link>
+      </div>
 
-    <Link href="/favourite" className={pathname === "/favourite" ? "text-blue-500" : "hover:text-blue-500"}>
-      Favourite
-      {favoritesCount > 0 && (
-        <span className="ml-1 inline-block bg-red-500 text-white text-xs px-2 rounded-full">
-          {favoritesCount}
-        </span>
-      )}
-    </Link>
-
-    <Link href="/cart" className={pathname === "/cart" ? "text-blue-500" : "hover:text-blue-500"}>
-      Cart
-      {cartCount > 0 && (
-        <span className="ml-1 inline-block bg-blue-500 text-white text-xs px-2 rounded-full">
-          {cartCount}
-        </span>
-      )}
-    </Link>
-
-  </div>
-
-  
-  <div className="hidden md:flex md:flex-1"></div>
-
-</nav>
-
-
+      <div className="hidden md:flex md:flex-1"></div>
+    </nav>
 
   )
 }
