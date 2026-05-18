@@ -1,24 +1,41 @@
-"use client "
+"use client"
 import React from 'react'
-import { useStore } from 'zustand'
+import Masonry from 'react-masonry-css'
+import { useStore } from '../../store'
+import { ImageComponent } from '../images/image-component'
 
 export const Favourite = () => {
-  
- 
+  const favourites = useStore((state) => state.favourites)
+
+  const breakpoints = {
+    default: 5,
+    1024: 3,
+    640: 3,
+    576: 2,
+  }
+
   return (
-    <div className='min-h-screen bg-white px-4 py-12'>
+    <div className="min-h-screen bg-white px-4 py-12 font-sans">
+      <h1 className="text-3xl font-bold  text-gray-800 mb-10 px-4">Favourites</h1>
 
-      <h1 className='flex text-3xl font-bold justify-center text-gray-800 mb-10'>Favourites</h1>
-      <div className='flex flex-col  gap-4 bg-gray-100  py-10 px-8  text-gray-600 bg-center rounded-lg shadow-md'>
-        <h1 className='text-xl font-semibold text-black'>Favourites</h1>
-        
-          <p>Not favourites yet.</p>
-        
+      <div className="max-w-6xl mx-auto">
+        {favourites.length === 0 ? (
+          <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
+            <p className="text-gray-600">Nu ai adăugat încă nicio fotografie la favorite.</p>
+          </div>
+        ) : (
+          <Masonry
+            breakpointCols={breakpoints}
+            className="flex gap-3"
+            columnClassName="flex flex-col gap-3"
+          >
+            {favourites.map((photo, index) => (
+              <ImageComponent photo={photo} key={photo.id} loading={index === 0 ? 'eager' : 'lazy'} />
+            ))}
+          </Masonry>
+        )}
       </div>
-
-
     </div>
-
   )
 }
 

@@ -17,15 +17,19 @@ export const Gallery = ({ data }: iProps) => {
   const [searchTerm, setSearchTerm] = useState("")
   const [images, setImages] = useState(data)
 
+  // repeated already in src\features\favourite\favourite.tsx
+  
   const breakpoints = {
     default: 5,
     1024: 3,
     640: 3,
     576: 2,
   }
-
+///extract loginc ito a custom hook and reuse it in both components
+//searchterm and be used as filtering
   useEffect(() => {
-    
+    // debounce search input
+
     const timeout = setTimeout( async() => {
       const res=await fetch(`/api/?query=${searchTerm}`)
       const data=await res.json()
@@ -38,7 +42,7 @@ export const Gallery = ({ data }: iProps) => {
   
   return (
     <div className="min-h-screen bg-white px-4 py-12 font-sans">
-      <h1 className="text-3xl font-bold text-center text-gray-800 mb-10">
+      <h1 className="text-3xl font-bold px-4 text-gray-800 mb-10">
         Gallery
       </h1>
       <div className="flex justify-center mb-10 text-black">

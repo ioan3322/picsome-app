@@ -19,7 +19,10 @@ export const LayoutMainNav = () => {
 
   const pathname = usePathname()
   return (
-    <nav className="sticky top-0 z-50 flex w-full items-center rounded-3xl border-b border-white/20 bg-white/10 px-4 py-2 text-black shadow-lg backdrop-blur-md backdrop-saturate-150">
+    
+    <nav className="sticky top-1 z-50  w-full px-1 ">
+      <div className=" flex items-center rounded-3xl  border-t  border-black/20 bg-white/10 px-4 py-2 text-black shadow-lg backdrop-blur-md backdrop-saturate-150">
+
       <div className="flex-1">
         <h1 className="text-2xl font-bold text-black">PS</h1>
       </div>
@@ -53,6 +56,7 @@ export const LayoutMainNav = () => {
       </div>
 
       <div className="hidden md:flex md:flex-1"></div>
+    </div>
     </nav>
 
   )
