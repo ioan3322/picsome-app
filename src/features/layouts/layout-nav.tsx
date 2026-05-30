@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react"
 import { LayoutMainNav } from "./layout-main-nav"
+import { LayoutNavHero } from "./layout-nav-hero"
 
-
-export const LayoutMain = () => {
+export const LayoutNav = () => {
   const [favoritesCount, setFavoritesCount] = useState(0)
   const [cartCount, setCartCount] = useState(0)
 
@@ -19,6 +19,11 @@ export const LayoutMain = () => {
   }, [])
 
   return (
-    <LayoutMainNav />
+    <div>
+
+      <LayoutMainNav />
+      <LayoutNavHero />
+    </div>
+
   )
 }

@@ -20,7 +20,7 @@ export const LayoutMainNav = () => {
   const pathname = usePathname()
   return (
     
-    <nav className="sticky top-1 z-50  w-full px-1 ">
+    <nav className="fixed top-1 z-50  w-full px-1 ">
       <div className=" flex items-center rounded-3xl  border-t  border-black/20 bg-white/10 px-4 py-2 text-black shadow-lg backdrop-blur-md backdrop-saturate-150">
 
       <div className="flex-1">

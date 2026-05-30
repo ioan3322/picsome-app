@@ -7,6 +7,7 @@ type StoreState = {
   addToCart: (item: ImageItem) => void;
   removeFromCart: (id: ImageItem['id']) => void;
   isInCart: (id: ImageItem['id']) => boolean;
+  toggleCart: (item: ImageItem) => void;
   toggleFavourite: (item: ImageItem) => void;
   isFavourite: (id: ImageItem['id']) => boolean;
   clearFavourites: () => void;
@@ -27,6 +28,7 @@ export const useStore = create<StoreState>((set, get) => ({
 };
     });
   },
+  
 
   removeFromCart: (id: ImageItem['id']) => {
     set((state) => ({ cart: state.cart.filter((i) => i.id !== id) } ));
@@ -34,6 +36,16 @@ export const useStore = create<StoreState>((set, get) => ({
   // check if item is in cart
   isInCart: (id: ImageItem['id']) => {
     return get().cart.some((i) => i.id === id);
+  },
+
+  toggleCart: (item: ImageItem) => {
+    set((state) => {
+      const exists = state.cart.some((i) => i.id === item.id);
+      if (exists) {
+        return { cart: state.cart.filter((i) => i.id !== item.id) };
+      }
+      return { cart: [...state.cart, item] };
+    });
   },
 
   toggleFavourite: (item: ImageItem) => {
