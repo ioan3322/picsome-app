@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server"
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams
-  const query = searchParams.get("query") || "random"
+  const query = searchParams.get("query") || "Tech"
   const page = searchParams.get("page") || "1"
 
   try {

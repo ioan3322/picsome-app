@@ -1,14 +1,33 @@
-import Link from "next/link"
+"use client"
+
+
+import { usePathname } from "next/navigation"
+
+const formatTitle = (pathname: string | null) => {
+  if (!pathname || pathname === "/") return "Home"
+  const parts = pathname.split("/").filter(Boolean)
+  const last = parts[parts.length - 1]
+  return last.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase())
+}
 
 export const LayoutNavHero = () => {
+  const pathname = usePathname()
+  const title = formatTitle(pathname)
+
   return (
-    <div className="relative flex flex-col items-center justify-center text-center py-20 px-4 bg-cover bg-center rounded-[0_0_8px_8px] shadow-md overflow-hidden"
-      style={{ backgroundImage: `url("/images/image1.jpg")` }}>
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-green-500/30" />
-      <div className="relative z-10" />
-      <h1 className="text-4xl font-bold text-white mb-4 z-20">
-        Wellcome to PicSome App
-      </h1>
+    <div
+      className="relative flex flex-col items-center justify-center text-center px-6 py-28 bg-cover bg-center overflow-hidden"
+      style={{ backgroundImage: `url(/images/image1.jpg)` }}
+    >
+      <div className="absolute inset-0 bg-black/60" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/80" />
+
+      <div className="relative z-10 max-w-3xl">
+        <h1 className="text-5xl md:text-6xl font-extrabold text-white leading-tight">
+          {title}
+        </h1>
+      </div>
+
     </div>
   )
 }
