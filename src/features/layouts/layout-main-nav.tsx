@@ -13,7 +13,7 @@ export const LayoutMainNav = () => {
   return (
 
     <nav className="fixed top-1 z-50  w-full px-1 ">
-      <div className=" flex items-center rounded-3xl  border-t  border-black/20 bg-white/10 px-4 py-2  shadow-lg backdrop-blur-md backdrop-saturate-150 gradient-to-r from-black/60 to-white/50">
+      <div className=" flex items-center rounded-3xl  border-t  border-black/20 bg-white/10 px-4 py-2  shadow-lg backdrop-blur-md backdrop-saturate-150 bg-gradient-to-t from-black/40 to-white/60">
 
         <div className="flex-1">
           <Link href="/">
